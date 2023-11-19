@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --main-color: #04395E;
+  --background-color-blured: #D9D9D9;
+  --footer-background-color: #FF1F66;
+  --poll-border-color: #021B2C;
+
+  font-family: 'Inter', sans-serif;
+}
