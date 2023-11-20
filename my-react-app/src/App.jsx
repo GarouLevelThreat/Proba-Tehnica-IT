@@ -5,8 +5,7 @@ import Footer from "./Footer/Footer";
 function App() {
 	return (
 		<>
-			<Navbar />
-			<MainContent />
+			<Footer />
 		</>
 	);
 }

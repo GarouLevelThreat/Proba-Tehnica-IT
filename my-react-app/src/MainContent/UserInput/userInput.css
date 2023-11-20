@@ -3,9 +3,9 @@
 }
 
 .wrapper input {
-  width: 300px;
-  margin: 14px 0;
-  padding: 12px 8px;
+  width: 360px;
+  margin: 16px 0;
+  padding: 16px 20px;
   background-color: transparent;
   border: 3px solid #FFFFFF;
   border-radius: 6px;
@@ -20,5 +20,5 @@
 
 .wrapper input::placeholder {
   color: #FFFFFF;
-  font-size: 1.1em;
+  font-size: 1.2em;
 }
