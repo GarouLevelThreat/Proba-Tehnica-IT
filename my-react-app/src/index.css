@@ -7,6 +7,12 @@
   --poll-border-color: #021B2C;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* body */
 
 body {
