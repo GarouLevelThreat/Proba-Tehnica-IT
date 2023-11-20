@@ -1,0 +1,27 @@
+.login-btn {
+  color: var(--main-color);
+  padding: 12px 45px;
+  background-color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+/*
+.create-account-btn {
+
+}
+
+.delete-btn {
+
+}
+
+.create-poll-btn {
+
+}
+*/
+
+.login-btn:hover {
+  cursor: pointer;
+}

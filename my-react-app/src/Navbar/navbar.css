@@ -1,0 +1,30 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 81px;
+  width: 100%;
+  padding: 1.5em;
+  background-color: #FFFFFF;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar .left-side img:hover {
+  cursor: pointer;
+}
+
+.navbar .right-side {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 140px;
+}
+
+.navbar .right-side a {
+  text-decoration: none;
+  color: var(--main-color);
+  font-size: 1.1em;
+  font-weight: 500;
+}

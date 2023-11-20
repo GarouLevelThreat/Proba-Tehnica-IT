@@ -1,11 +1,12 @@
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "./Navbar/Navbar";
+import MainContent from "./MainContent/MainContent";
+import Footer from "./Footer/Footer";
 
 function App() {
 	return (
 		<>
 			<Navbar />
-			<Footer />
+			<MainContent />
 		</>
 	);
 }

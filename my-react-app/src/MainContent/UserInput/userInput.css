@@ -1,0 +1,24 @@
+.wrapper {
+  position: relative;
+}
+
+.wrapper input {
+  width: 300px;
+  margin: 14px 0;
+  padding: 12px 8px;
+  background-color: transparent;
+  border: 3px solid #FFFFFF;
+  border-radius: 6px;
+  color: #FFFFFF;
+  font-size: 1.1em;
+}
+
+.wrapper input:focus,
+.wrapper input textarea:focus {
+  outline: none;
+}
+
+.wrapper input::placeholder {
+  color: #FFFFFF;
+  font-size: 1.1em;
+}

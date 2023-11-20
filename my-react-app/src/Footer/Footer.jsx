@@ -1,6 +1,7 @@
-import InstagramLogo from "./assets/mdi_instagram.svg";
-import TwitchLogo from "./assets/mdi_twitch.svg";
-import FacebookLogo from "./assets/uil_facebook.svg";
+import InstagramLogo from "../assets/mdi_instagram.svg";
+import TwitchLogo from "../assets/mdi_twitch.svg";
+import FacebookLogo from "../assets/uil_facebook.svg";
+import "./footer.css";
 
 function Footer() {
 	return (
