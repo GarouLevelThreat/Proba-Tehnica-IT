@@ -1,10 +1,11 @@
-import InstagramLogo from "./assets/mdi_instagram.svg";
-import TwitchLogo from "./assets/mdi_twitch.svg";
-import FacebookLogo from "./assets/uil_facebook.svg";
+import InstagramLogo from "../assets/mdi_instagram.svg";
+import TwitchLogo from "../assets/mdi_twitch.svg";
+import FacebookLogo from "../assets/uil_facebook.svg";
+import styles from "./Footer.module.css";
 
 function Footer() {
 	return (
-		<footer className="footer">
+		<footer className={styles.footer}>
 			<a href="#">
 				<img src={InstagramLogo} alt="instagram-logo" />
 			</a>
