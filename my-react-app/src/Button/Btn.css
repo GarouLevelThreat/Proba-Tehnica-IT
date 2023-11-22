@@ -26,7 +26,8 @@
 
 .login-btn:hover,
 .create-account-btn,
-.close-btn {
+.close-btn,
+.radio-btn {
   cursor: pointer;
 }
 
@@ -38,4 +39,12 @@
   position: absolute;
   top: 16px;
   right: 16px;
+}
+
+.radio-btn {
+  width: 32px;
+  height: 32px;
+  border: 3.5px solid var(--main-color);
+  border-radius: 50%; 
+  background-color: transparent;
 }

@@ -2,4 +2,26 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 101px;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 80px;
+  column-gap: 80px;
+  margin-bottom: 120px;
+}
+
+.defaultText {
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  font-size: 26px;
+  font-weight: 500;
+  max-width: 500px;
+}
+
+.defaultImg {
+  max-width: 500px;
 }

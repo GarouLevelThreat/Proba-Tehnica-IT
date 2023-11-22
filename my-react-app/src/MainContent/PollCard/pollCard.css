@@ -1,0 +1,19 @@
+.pollContainer {
+  background-color: #FFFFFF;
+  padding: 30px 25px;
+  width: 540px;
+  height: 540px;
+  border-radius: 24px;
+}
+
+.pollTitle {
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 26px;
+}
+
+.pollChoicesContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}

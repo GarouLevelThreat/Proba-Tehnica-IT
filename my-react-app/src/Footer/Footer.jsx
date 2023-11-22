@@ -5,7 +5,7 @@ import "./footer.css";
 
 function Footer() {
 	return (
-		<footer className={styles.footer}>
+		<footer className="footer">
 			<a href="#">
 				<img src={InstagramLogo} alt="instagram-logo" />
 			</a>
