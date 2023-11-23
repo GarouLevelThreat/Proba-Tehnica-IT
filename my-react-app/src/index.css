@@ -18,3 +18,21 @@ body {
   background-color: var(--main-color);
   position: relative;
 }
+
+@media screen and ((max-width: 768px)) {
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navbar .right-side {
+    justify-content: end;
+  }
+
+  .pollContainer {
+    width: 80vw;
+    height: 100%;
+  }
+}

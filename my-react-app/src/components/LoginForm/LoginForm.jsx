@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Btn from "../Button/Btn";
-import UserInput from "../UserInput/UserInput";
-import "../LoginForm/LoginForm.css";
+import AuthInput from "../AuthInput/AuthInput";
+import "./LoginForm.css";
 
 function LoginForm() {
 	useEffect(() => {
@@ -14,7 +14,6 @@ function LoginForm() {
 			document.body.style.backgroundColor = "var(--main-color)";
 		};
 	}, []);
-
 	return (
 		<div className="container">
 			<form action="#">
@@ -22,8 +21,8 @@ function LoginForm() {
 				<h2 className="title">Login</h2>
 
 				<div className="user-input">
-					<UserInput type="text" placeholder="Email" />
-					<UserInput type="password" placeholder="Password" />
+					<AuthInput type="text" placeholder="Email" />
+					<AuthInput type="password" placeholder="Password" />
 				</div>
 
 				<Btn class="login-btn" name="Login" />

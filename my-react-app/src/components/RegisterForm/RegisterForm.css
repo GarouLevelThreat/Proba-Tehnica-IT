@@ -38,3 +38,22 @@ form .user-input {
   flex-direction: column;
   margin-bottom: 60px;
 }
+
+@media screen and ((max-width: 768px)) {
+  .container {
+    width: 70vw;
+  }
+
+  .user-input {
+    scale: 0.7;
+    margin: 0 20px;
+  }
+
+  .close-btn {
+    scale: 0.8;
+  }
+
+  .create-account-btn {
+    font-size: 16px;
+  }
+}

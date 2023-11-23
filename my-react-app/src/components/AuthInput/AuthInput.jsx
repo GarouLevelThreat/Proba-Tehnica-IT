@@ -1,6 +1,6 @@
-import "./userInput.css";
+import "./AuthInput.css";
 
-function UserInput(props) {
+function AuthInput(props) {
 	return (
 		<div className="wrapper">
 			<input type={props.type} placeholder={props.placeholder}></input>
@@ -8,4 +8,4 @@ function UserInput(props) {
 	);
 }
 
-export default UserInput;
+export default AuthInput;

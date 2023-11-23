@@ -1,9 +1,9 @@
-import "./Login.css";
+import "./Register.css";
 import Navbar from "../../components/Navbar/Navbar";
-import LoginForm from "../../components/LoginForm/LoginForm";
+import RegisterForm from "../../components/RegisterForm/RegisterForm";
 import PollCard from "../../components/PollCard/PollCard";
 
-function Login() {
+function Register() {
 	return (
 		<>
 			<Navbar />
@@ -11,9 +11,9 @@ function Login() {
 				<PollCard title="Cine este coordonatorul departamentului de IT?" />
 				<PollCard title="Cine este coordonatorul departamentului de IT?" />
 			</main>
-			<LoginForm />
+			<RegisterForm />
 		</>
 	);
 }
 
-export default Login;
+export default Register;

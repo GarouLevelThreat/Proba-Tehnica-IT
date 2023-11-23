@@ -1,7 +1,7 @@
-import "./pollChoice.css";
+import "./PollOption.css";
 import Btn from "../Button/Btn";
 
-function PollChoice(props) {
+function PollOption(props) {
 	return (
 		<div className="choiceContainer">
 			<div className="btnContainer">
@@ -14,4 +14,4 @@ function PollChoice(props) {
 	);
 }
 
-export default PollChoice;
+export default PollOption;

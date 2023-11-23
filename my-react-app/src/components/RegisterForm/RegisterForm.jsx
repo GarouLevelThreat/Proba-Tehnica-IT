@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import Btn from "../../Shared/Button/Btn";
-import UserInput from "../../Shared/UserInput/UserInput";
-import "../login-register.css";
+import Btn from "../Button/Btn";
+import AuthInput from "../AuthInput/AuthInput";
+import "./RegisterForm.css";
 
 function RegisterForm() {
 	useEffect(() => {
@@ -22,9 +22,9 @@ function RegisterForm() {
 				<h2 class="title">Register</h2>
 
 				<div className="user-input">
-					<UserInput type="text" placeholder="Email" />
-					<UserInput type="password" placeholder="Password" />
-					<UserInput type="password" placeholder="Confirm password" />
+					<AuthInput type="text" placeholder="Email" />
+					<AuthInput type="password" placeholder="Password" />
+					<AuthInput type="password" placeholder="Confirm password" />
 				</div>
 
 				<Btn class="create-account-btn" name="Create Account" />
