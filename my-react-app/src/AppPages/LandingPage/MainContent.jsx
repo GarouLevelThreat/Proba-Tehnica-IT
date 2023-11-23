@@ -1,5 +1,5 @@
 import testoasa_1 from "../../assets/testoasa_1.jpg";
-import PollCard from "./PollCard/PollCard";
+import PollCard from "../../components/PollCard/PollCard";
 import "./mainContent.css";
 
 function MainContent() {

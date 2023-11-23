@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import Btn from "../../Shared/Button/Btn";
-import UserInput from "../../Shared/UserInput/UserInput";
-import "../login-register.css";
+import Btn from "../Button/Btn";
+import UserInput from "../UserInput/UserInput";
+import "../LoginForm/LoginForm.css";
 
 function LoginForm() {
 	useEffect(() => {

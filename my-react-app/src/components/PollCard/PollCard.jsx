@@ -1,5 +1,5 @@
 import "./pollCard.css";
-import PollChoice from "./PollChoice/PollChoice";
+import PollChoice from "../PollOption/PollOption";
 
 function PollCard(props) {
 	return (

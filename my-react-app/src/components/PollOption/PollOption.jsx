@@ -1,5 +1,5 @@
 import "./pollChoice.css";
-import Btn from "../../../../Shared/Button/Btn";
+import Btn from "../Button/Btn";
 
 function PollChoice(props) {
 	return (

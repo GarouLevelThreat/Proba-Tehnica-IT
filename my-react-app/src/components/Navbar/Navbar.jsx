@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import LoginForm from "../../AppPages/LoginForm/LoginForm";
-import RegisterForm from "../../AppPages/RegisterForm/RegisterForm";
 import Logo from "../../assets/logo.jpg";
-import "./navbar.css";
-import Footer from "../Footer/Footer";
+import "../../components/Navbar/Navbar.css";
 
 function Navbar() {
 	const [isLoginToggled, setIsLoginToggled] = useState(false);
