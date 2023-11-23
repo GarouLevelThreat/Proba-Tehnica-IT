@@ -1,8 +1,20 @@
-import Btn from "../../Button/Btn";
-import UserInput from "../UserInput/UserInput";
+import React, { useEffect } from "react";
+import Btn from "../../Shared/Button/Btn";
+import UserInput from "../../Shared/UserInput/UserInput";
 import "../login-register.css";
 
 function RegisterForm() {
+	useEffect(() => {
+		// Change body style when the component mounts
+		document.body.style.backgroundColor = "var(--background-color-blured)";
+
+		// Cleanup when the component unmounts
+		return () => {
+			// Remove the styles or reset to their original values
+			document.body.style.backgroundColor = "var(--main-color)";
+		};
+	}, []);
+
 	return (
 		<div className="container">
 			<form action="#">

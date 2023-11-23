@@ -1,8 +1,5 @@
-import Footer from "../Footer/Footer";
-import LoginForm from "./LoginForm/LoginForm";
+import testoasa_1 from "../../assets/testoasa_1.jpg";
 import PollCard from "./PollCard/PollCard";
-import RegisterForm from "./RegisterForm/RegisterForm";
-import testoasa_1 from "../assets/testoasa_1.jpg";
 import "./mainContent.css";
 
 function MainContent() {
