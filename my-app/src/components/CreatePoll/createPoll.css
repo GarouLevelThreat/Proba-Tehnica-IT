@@ -1,0 +1,64 @@
+.blur {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background-color-blured);
+  opacity: 0.7;
+}
+
+.create-poll-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+}
+
+.create-poll-container form {
+  background-color: var(--main-color);
+  padding: 30px 60px 0 60px;
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-poll-container form .create-poll-title {
+  color: #FFF;
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  font-size: 2.3em;
+}
+
+.create-poll-container form .create-poll-btn {
+  height: 50px;
+  padding: 12px 44px;
+  border: none;
+  border-radius: 8px;
+  background-color: #FFF;
+  color: var(--main-color);
+  font-weight: bold;
+  font-size: 1.4em;
+  margin-top: 72px;
+  margin-bottom: 35px;
+  cursor: pointer;
+}
+
+.create-poll-container form .section-description {
+  color: #FFF;
+  font-size: 1.2em;
+  margin-top: 36px;
+  font-weight: 500;
+}
+
+.choice-type {
+  font-weight: 400;
+}
+

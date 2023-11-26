@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --main-color: #04395E;
+  --background-color-blured: #D9D9D9;
+  --footer-background-color: #FF1F66;
+  --poll-border-color: #021B2C;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--main-color);
+  padding: 81px 0;
+  position: relative;
+  min-height: 100vh;
+  font-family: Inter, sans-serif;
+}
+
+.default-text {
+  color: #FFF;
+  font-size: 1.6em;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main img {
+  width: 100%;
+}
+
+

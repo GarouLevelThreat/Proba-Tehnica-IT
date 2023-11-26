@@ -1,0 +1,20 @@
+.choice-container {
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+}
+
+.option-container {
+  flex-wrap: wrap;
+}
+
+.choice-container .radio-btn {
+  width: 28px;
+  height: 28px;
+}
+
+.choice-option {
+  margin-left: 16px;
+  font-size: 20px;
+  font-weight: 500;
+}

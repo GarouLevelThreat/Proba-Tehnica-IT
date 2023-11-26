@@ -1,0 +1,20 @@
+.voting-choice-container {
+  display: flex;
+  align-items: center;
+}
+
+.voting-option-container {
+  flex-wrap: wrap;
+}
+
+.voting-choice-container .radio-btn {
+  width: 28px;
+  height: 28px;
+}
+
+.voting-choice-option {
+  margin-left: 16px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #FFF;
+}
