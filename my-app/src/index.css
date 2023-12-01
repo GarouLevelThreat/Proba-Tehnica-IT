@@ -30,8 +30,62 @@ body {
   justify-content: center;
 }
 
-main img {
+.default-image {
   width: 100%;
 }
 
+@media (max-width: 768px) {
+  .defaults-container {
+    grid-template-columns: 64% 36%;
+    margin-top: 60px;
+    gap: 20px;
+  }
 
+  .default-text {
+    font-size: 12px;
+  }
+
+  .default-image {
+    width: 100%;
+  }
+
+  .cards-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 20px;
+  }
+
+  .poll-container {
+    width: 84vw;
+    height: 100%;
+  }
+
+  .choice-container {
+    margin: 0;
+  }
+
+  .login-container,
+  .register-container {
+    transform: translate(-50%, -76.5%);
+  }
+
+  .footer {
+    justify-content: space-evenly;
+  }
+
+  .footer a {
+    padding: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .login-container {
+    transform: translate(-50%, -86%);
+  }
+  .register-container {
+    transform: translate(-50%, -85.5%);
+  }
+  .formInput {
+    width: 280px;
+  }
+}

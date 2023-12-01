@@ -24,48 +24,119 @@ const App = () => {
 		setIsFooter(false);
 	};
 
+  const [isUserLogged, setIsUserLogged] = useState(false);
+
+	const [isUserRegistered, setIsUserRegistered] = useState(false);
+
+	const handleLoginStatus = () => {
+		setLoginPopup(false);
+		setIsUserLogged(true);
+	};
+
+	const handleRegisterStatus = () => {
+		setRegisterPopup(false);
+		setIsUserRegistered(true);
+	};
+
+	const [pollCards, setPollCards] = useState([
+		{
+			id: "0",
+			title: "Poll 1",
+			options: ["option 1", "option 2", "option 3"],
+		},
+		{
+			id: "1",
+			title: "Poll 2",
+			options: ["option 4", "option 5", "option 6"],
+		},
+		{
+			id: "2",
+			title: "Poll 3",
+			options: ["option 4", "option 5", "option 6"],
+		},
+		{
+			id: "3",
+			title: "Poll 4",
+			options: ["option 4", "option 5", "option 6"],
+		},
+	]);
+
+	const handleDelete = (deletePoll) => {
+		let deletePollId = deletePoll.target.id;
+
+		console.log(deletePoll.target.id);
+
+		const newPollCards = pollCards.filter((poll) => deletePollId !== poll.id);
+		setPollCards(newPollCards);
+	};
+
+	const handleVote = () => {
+		console.log("voted");
+	};
+
+	const listPollCards = pollCards.map((poll) => (
+		<PollCard
+			key={poll.id}
+			id={poll.id}
+			title={poll.title}
+			optionsList={poll.options}
+			isUserLogged={isUserLogged}
+			triggerUserStatus={setIsUserLogged}
+			triggerDelete={handleDelete}
+			triggerVote={handleVote}
+		/>
+	));
+
 	return (
 		<>
 			<nav className="navbar">
 				<div className="left-side">
 					<img src={Logo} alt="logo" />
 				</div>
-				<ul className="right-side">
-					<li>
-						<a href="#" onClick={handleClickLogin}>
-							Login
-						</a>
-					</li>
-					<li>
-						<a href="#" onClick={handleClickRegister}>
-							Register
-						</a>
-					</li>
-				</ul>
+				{isUserLogged === false ? (
+					<ul className="right-side">
+						<li>
+							<a href="#" onClick={handleClickLogin}>
+								Login
+							</a>
+						</li>
+						<li>
+							<a href="#" onClick={handleClickRegister}>
+								Register
+							</a>
+						</li>
+					</ul>
+				) : (
+					<ul className="right-side">
+						<li>
+							<a href="#">Create poll</a>
+						</li>
+						<li>
+							<a href="#">Log out</a>
+						</li>
+					</ul>
+				)}
 			</nav>
 
 			<Register
 				trigger={registerPopup}
 				setTrigger={setRegisterPopup}
 				setFooterTrigger={setIsFooter}
+				setRegisterStatus={handleRegisterStatus}
 			/>
 			<Login
 				trigger={loginPopup}
 				setTrigger={setLoginPopup}
 				setFooterTrigger={setIsFooter}
+				setLoginStatus={handleLoginStatus}
 			/>
 
 			<main>
-				<div className="cards-container">
+				<div className="defaults-container">
 					<DefaultText trigger={isFooter} />
 					<DefaultImage trigger={isFooter} />
-					<PollCard title="Title" />
-					<PollCard title="Title" />
-					<PollCard title="Title" />
-					<PollCard title="Title" />
-					<PollCard title="Title" />
-					<PollCard title="Title" />
 				</div>
+				<div className="cards-container">{listPollCards}</div>
 			</main>
 
 			<Footer trigger={isFooter} />

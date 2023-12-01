@@ -4,8 +4,8 @@ import App from './App.jsx'
 import Test from './Test.jsx'
 import './index.css'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+ReactDOM.createRoot(document.getElementById("root")).render(
+	<React.StrictMode>
+		<App />
+	</React.StrictMode>
+);

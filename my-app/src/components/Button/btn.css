@@ -26,3 +26,21 @@
 .add-option-btn:hover {
   opacity: 0.8;
 }
+
+.delete-btn,
+.vote-btn {
+  width: 96px;
+  height: 36px;
+  background-color: var(--main-color);
+  padding: 6px 20px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.vote-btn {
+  margin-left: 70%
+}
