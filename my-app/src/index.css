@@ -64,11 +64,6 @@ body {
     margin: 0;
   }
 
-  .login-container,
-  .register-container {
-    transform: translate(-50%, -76.5%);
-  }
-
   .footer {
     justify-content: space-evenly;
   }

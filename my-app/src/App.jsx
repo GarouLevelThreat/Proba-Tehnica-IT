@@ -2,6 +2,7 @@ import Logo from "./assets/logo.jpg";
 import { useState } from "react";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
+import CreatePoll from "./components/CreatePoll/CreatePoll";
 import PollCard from "./components/PollCard/PollCard";
 import Footer from "./components/Footer/Footer";
 import "./navbar.css";
@@ -24,18 +25,26 @@ const App = () => {
 		setIsFooter(false);
 	};
 
-  const [isUserLogged, setIsUserLogged] = useState(false);
-
+	const [isUserLogged, setIsUserLogged] = useState(false);
 	const [isUserRegistered, setIsUserRegistered] = useState(false);
 
 	const handleLoginStatus = () => {
 		setLoginPopup(false);
 		setIsUserLogged(true);
+		setIsFooter(true);
 	};
 
 	const handleRegisterStatus = () => {
 		setRegisterPopup(false);
 		setIsUserRegistered(true);
+		setIsFooter(true);
+	};
+
+	const [createPollPopup, setCreatePollPopup] = useState(false);
+
+	const handleClickCreatePoll = () => {
+		if (!createPollPopup) setCreatePollPopup(true);
+		setIsFooter(false);
 	};
 
 	const [pollCards, setPollCards] = useState([
@@ -47,21 +56,21 @@ const App = () => {
 		{
 			id: "1",
 			title: "Poll 2",
-			options: ["option 4", "option 5", "option 6"],
+			options: ["option 1", "option 2", "option 3"],
 		},
 		{
 			id: "2",
 			title: "Poll 3",
-			options: ["option 4", "option 5", "option 6"],
+			options: ["option 1", "option 2", "option 3"],
 		},
 		{
 			id: "3",
 			title: "Poll 4",
-			options: ["option 4", "option 5", "option 6"],
+			options: ["option 1", "option 2", "option 3"],
 		},
 	]);
 
-	const handleDelete = (deletePoll) => {
+	const handleDeletePoll = (deletePoll) => {
 		let deletePollId = deletePoll.target.id;
 
 		console.log(deletePoll.target.id);
@@ -82,7 +91,7 @@ const App = () => {
 			optionsList={poll.options}
 			isUserLogged={isUserLogged}
 			triggerUserStatus={setIsUserLogged}
-			triggerDelete={handleDelete}
+			triggerDelete={handleDeletePoll}
 			triggerVote={handleVote}
 		/>
 	));
@@ -109,7 +118,10 @@ const App = () => {
 				) : (
 					<ul className="right-side">
 						<li>
-							<a href="#">Create poll</a>
+							<a href="#" onClick={handleClickCreatePoll}>
+								Create poll
+								{}
+							</a>
 						</li>
 						<li>
 							<a href="#">Log out</a>
@@ -129,6 +141,11 @@ const App = () => {
 				setTrigger={setLoginPopup}
 				setFooterTrigger={setIsFooter}
 				setLoginStatus={handleLoginStatus}
+			/>
+			<CreatePoll
+				trigger={createPollPopup}
+				setTrigger={setCreatePollPopup}
+				setFooterTrigger={setIsFooter}
 			/>
 
 			<main>

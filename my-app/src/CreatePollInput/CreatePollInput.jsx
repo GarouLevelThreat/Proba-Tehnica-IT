@@ -1,17 +1,21 @@
 import "./createPollInput.css"
 import {useState} from "react"
+import Btn from "../components/Button/Btn";
 
 const CreatePollInput = (props) => {
-  const {errorMessage, onChange, id, ...inputProps } = props;
+	const { onChange, ...inputProps } = props;
 
-  return (
-    <div className="create-poll-input">
-      <input
-        {...inputProps}
-        onChange={onChange}
-      />
-    </div>
-  );
-}
+	return (
+		<div className="create-poll-input">
+			<input {...inputProps} onChange={onChange} />
+			<Btn
+				class="delete-field-btn"
+				name="&#x2715;"
+				onClick={props.triggerDelete}
+				render={props.render}
+			/>
+		</div>
+	);
+};
 
 export default CreatePollInput

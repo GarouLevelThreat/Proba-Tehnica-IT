@@ -5,6 +5,7 @@ import Btn from "../Button/Btn";
 
 const PollCard = (props) => {
 	const [isChecked, setIsChecked] = useState("");
+  const [canVote, setCanVote] = useState(true);
 
 	return (
 		<div className="poll-container">
@@ -32,10 +33,15 @@ const PollCard = (props) => {
 						id={props.id}
 					/>
 				)}
-				{isChecked === "" ? (
+				{canVote === false || isChecked === "" ? (
 					""
 				) : (
-					<Btn name="Vote" class="vote-btn" onClick={props.triggerVote} />
+					<Btn
+						name="Vote"
+						class="vote-btn"
+						onClick={props.triggerVote}
+						id={props.id}
+					/>
 				)}
 			</div>
 		</div>
