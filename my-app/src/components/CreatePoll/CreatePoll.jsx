@@ -60,6 +60,7 @@ const CreatePoll = (props) => {
 		/>
 	));
 
+	/*
 	const [inputs, setInputs] = useState({
 		title: "",
 		optionsList: listPollOptions,
@@ -71,6 +72,7 @@ const CreatePoll = (props) => {
 	};
 
 	console.log(inputs);
+  */
 
 	return props.trigger ? (
 		<>
@@ -90,7 +92,6 @@ const CreatePoll = (props) => {
 						<p className="section-description">Title</p>
 						<CreatePollInput
 							placeholder="Type your question here"
-							onChange={onTitleChange}
 							render={false}
 						/>
 

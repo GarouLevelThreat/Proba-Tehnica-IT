@@ -11,6 +11,7 @@ const CreatePollInput = (props) => {
 			<Btn
 				class="delete-field-btn"
 				name="&#x2715;"
+				id={props.id}
 				onClick={props.triggerDelete}
 				render={props.render}
 			/>
