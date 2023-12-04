@@ -3,28 +3,41 @@ import {useState} from "react"
 import Btn from "../Button/Btn";
 import CreatePollInput from "../../CreatePollInput/CreatePollInput";
 import VotingOption from "../VotingOption/VotingOption";
-import FormInput from "../FormInput/FormInput";
 
 const CreatePoll = (props) => {
 	const [idValue, setIdValue] = useState(4);
+	const [title, setTitle] = useState("");
+
+	const handleTitleChange = (e) => {
+		setTitle(e.target.value);
+	};
+
+	const [votingOption, setVotingOption] = useState("0");
+
 	const [pollOptions, setPollOptions] = useState([
 		{
 			id: "1",
-			info: "",
+			input: "",
 			placeholder: "Option 1",
 		},
 		{
 			id: "2",
-			info: "a",
+			input: "",
 			placeholder: "Option 2",
 		},
 		{
 			id: "3",
-			info: "",
+			input: "",
 			placeholder: "Option 3",
 		},
 	]);
-	const [isChecked, setIsChecked] = useState("");
+
+	const handlePollOptionChange = (index) => (e) => {
+		let newPollOptions = [...pollOptions];
+		newPollOptions[index].input = e.target.value;
+
+		setPollOptions(newPollOptions);
+	};
 
 	const handleAddOption = () => {
 		const addOption = {
@@ -50,15 +63,22 @@ const CreatePoll = (props) => {
 		setPollOptions(newPollOptions);
 	};
 
-	const listPollOptions = pollOptions.map((option) => (
+	const listPollOptions = pollOptions.map((option, index) => (
 		<CreatePollInput
 			key={option.id}
 			id={option.id}
-			info={option.info}
+			input={option.input}
 			placeholder={option.placeholder}
+			onChange={handlePollOptionChange(index)}
 			triggerDelete={handleDeleteOption}
 		/>
 	));
+
+	const inputs = {
+		title: title,
+		votingOption: votingOption,
+		pollOptions: pollOptions,
+	};
 
 	/*
 	const [inputs, setInputs] = useState({
@@ -74,11 +94,15 @@ const CreatePoll = (props) => {
 	console.log(inputs);
   */
 
+	const handleSubmit = () => {
+		console.log(inputs);
+	};
+
 	return props.trigger ? (
 		<>
 			<div className="blur"></div>
 			<div className="create-poll-container">
-				<form>
+				<form onSubmit={handleSubmit}>
 					<Btn
 						name="&#x2715;"
 						class="close-btn"
@@ -93,20 +117,21 @@ const CreatePoll = (props) => {
 						<CreatePollInput
 							placeholder="Type your question here"
 							render={false}
+							onChange={handleTitleChange}
 						/>
 
 						<p className="section-description">Voting Type</p>
 						<VotingOption
 							option="Single Choice"
 							id="0"
-							status={isChecked}
-							onChange={setIsChecked}
+							status={votingOption}
+							onChange={setVotingOption}
 						/>
 						<VotingOption
 							option="Multiple Choice"
 							id="1"
-							status={isChecked}
-							onChange={setIsChecked}
+							status={votingOption}
+							onChange={setVotingOption}
 						/>
 
 						<p className="section-description">Answer Options</p>
@@ -119,7 +144,16 @@ const CreatePoll = (props) => {
 							/>
 						</div>
 					</div>
-					<button className="create-poll-btn">Create Poll</button>
+					<button
+						className="create-poll-btn"
+						onClick={() => {
+							props.setTrigger(false);
+							props.setFooterTrigger(true);
+							props.addPoll(inputs);
+						}}
+					>
+						Create Poll
+					</button>
 				</form>
 			</div>
 		</>

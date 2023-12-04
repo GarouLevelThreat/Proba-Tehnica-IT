@@ -47,25 +47,34 @@ const App = () => {
 		setIsFooter(false);
 	};
 
+  const handleClickLogout = () => {
+		setIsUserLogged(false);
+	};
+
+	const [idValue, setIdValue] = useState(4);
 	const [pollCards, setPollCards] = useState([
 		{
 			id: "0",
 			title: "Poll 1",
+			votingOption: "1",
 			options: ["option 1", "option 2", "option 3"],
 		},
 		{
 			id: "1",
 			title: "Poll 2",
+			votingOption: "0",
 			options: ["option 1", "option 2", "option 3"],
 		},
 		{
 			id: "2",
 			title: "Poll 3",
+			votingOption: "0",
 			options: ["option 1", "option 2", "option 3"],
 		},
 		{
 			id: "3",
 			title: "Poll 4",
+			votingOption: "0",
 			options: ["option 1", "option 2", "option 3"],
 		},
 	]);
@@ -79,6 +88,20 @@ const App = () => {
 		setPollCards(newPollCards);
 	};
 
+	const handleAddPoll = (inputs) => {
+		const newPoll = {
+			id: `${idValue}`,
+			title: inputs.title,
+			votingOption: inputs.votingOption,
+			options: inputs.pollOptions.map((option) => option.input),
+		};
+
+		setIdValue(idValue + 1);
+		const newPollCards = pollCards.concat(newPoll);
+
+		setPollCards(newPollCards);
+	};
+
 	const handleVote = () => {
 		console.log("voted");
 	};
@@ -88,6 +111,7 @@ const App = () => {
 			key={poll.id}
 			id={poll.id}
 			title={poll.title}
+			votingOption={poll.votingOption}
 			optionsList={poll.options}
 			isUserLogged={isUserLogged}
 			triggerUserStatus={setIsUserLogged}
@@ -124,7 +148,9 @@ const App = () => {
 							</a>
 						</li>
 						<li>
-							<a href="#">Log out</a>
+							<a href="#" onClick={handleClickLogout}>
+								Log out
+							</a>
 						</li>
 					</ul>
 				)}
@@ -146,6 +172,7 @@ const App = () => {
 				trigger={createPollPopup}
 				setTrigger={setCreatePollPopup}
 				setFooterTrigger={setIsFooter}
+				addPoll={handleAddPoll}
 			/>
 
 			<main>

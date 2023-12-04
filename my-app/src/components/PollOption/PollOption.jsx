@@ -1,9 +1,8 @@
 import "./PollOption.css";
-import { useState } from "react";
 
 const PollOption = (props) => {
 	const handleChange = () => {
-		props.onChange(props.id);
+		if (props.canVote !== false) props.onChange(props.id);
 	};
 
 	return (
@@ -11,7 +10,13 @@ const PollOption = (props) => {
 			<input
 				type="radio"
 				className="radio-btn"
-				checked={props.status === props.id}
+				checked={
+					/*
+					(props.votingOption === "0" && props.status === props.id) ||
+					props.votingOption === "1"
+          */
+					props.status === props.id
+				}
 				onChange={handleChange}
 			/>
 			<div className="option-container">

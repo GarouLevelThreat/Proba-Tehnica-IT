@@ -75,12 +75,16 @@ body {
 
 @media (max-width: 500px) {
   .login-container {
-    transform: translate(-50%, -86%);
+    transform: translate(-50%, -52.5%);
   }
   .register-container {
-    transform: translate(-50%, -85.5%);
+    transform: translate(-50%, -52.5%);
   }
   .formInput {
     width: 280px;
+  }
+
+  .vote-btn {
+    margin-left: 45%
   }
 }
