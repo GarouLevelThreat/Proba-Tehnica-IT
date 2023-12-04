@@ -1,0 +1,15 @@
+.hamburger-menu {
+  scale: 1.5;
+  cursor: pointer;
+}
+
+.links-parent {
+  position: relative;
+}
+
+.links-container {
+  position: absolute;
+  bottom: -112px;
+  right: -24px;
+  background-color: #FFF;
+}

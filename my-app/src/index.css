@@ -35,6 +35,17 @@ body {
 }
 
 @media (max-width: 768px) {
+  .navbar ul {
+    flex-direction: column;
+    width: 140px;
+    padding: 12px;
+  }
+
+  .navbar li {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   .defaults-container {
     grid-template-columns: 64% 36%;
     margin-top: 60px;
@@ -74,6 +85,10 @@ body {
 }
 
 @media (max-width: 500px) {
+  .navbar a {
+    font-size: 16px;
+  }
+
   .login-container {
     transform: translate(-50%, -52.5%);
   }

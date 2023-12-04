@@ -1,7 +1,9 @@
 import Logo from "./assets/logo.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
+import ResizeNavbar from "./components/ResizeNavbar/ResizeNavbar";
+import NavbarLinks from "./components/NavbarLinks/NavbarLinks";
 import CreatePoll from "./components/CreatePoll/CreatePoll";
 import PollCard from "./components/PollCard/PollCard";
 import Footer from "./components/Footer/Footer";
@@ -47,7 +49,7 @@ const App = () => {
 		setIsFooter(false);
 	};
 
-  const handleClickLogout = () => {
+	const handleClickLogout = () => {
 		setIsUserLogged(false);
 	};
 
@@ -126,34 +128,13 @@ const App = () => {
 				<div className="left-side">
 					<img src={Logo} alt="logo" />
 				</div>
-				{isUserLogged === false ? (
-					<ul className="right-side">
-						<li>
-							<a href="#" onClick={handleClickLogin}>
-								Login
-							</a>
-						</li>
-						<li>
-							<a href="#" onClick={handleClickRegister}>
-								Register
-							</a>
-						</li>
-					</ul>
-				) : (
-					<ul className="right-side">
-						<li>
-							<a href="#" onClick={handleClickCreatePoll}>
-								Create poll
-								{}
-							</a>
-						</li>
-						<li>
-							<a href="#" onClick={handleClickLogout}>
-								Log out
-							</a>
-						</li>
-					</ul>
-				)}
+				<ResizeNavbar
+					isUserLogged={isUserLogged}
+					handleClickLogin={handleClickLogin}
+					handleClickRegister={handleClickRegister}
+					handleClickCreatePoll={handleClickCreatePoll}
+					handleClickLogout={handleClickLogout}
+				/>
 			</nav>
 
 			<Register

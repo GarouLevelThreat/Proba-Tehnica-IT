@@ -1,7 +1,7 @@
 import "./createPoll.css"
 import {useState} from "react"
 import Btn from "../Button/Btn";
-import CreatePollInput from "../../CreatePollInput/CreatePollInput";
+import CreatePollInput from "../../components/CreatePollInput/CreatePollInput";
 import VotingOption from "../VotingOption/VotingOption";
 
 const CreatePoll = (props) => {
@@ -79,20 +79,6 @@ const CreatePoll = (props) => {
 		votingOption: votingOption,
 		pollOptions: pollOptions,
 	};
-
-	/*
-	const [inputs, setInputs] = useState({
-		title: "",
-		optionsList: listPollOptions,
-	});
-
-	const onTitleChange = (e) => {
-		setInputs({ ...inputs, title: e.target.value });
-		//console.log(inputs.title);
-	};
-
-	console.log(inputs);
-  */
 
 	const handleSubmit = () => {
 		console.log(inputs);

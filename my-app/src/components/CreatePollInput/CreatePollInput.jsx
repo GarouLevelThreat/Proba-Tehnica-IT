@@ -1,6 +1,6 @@
-import "./createPollInput.css"
-import {useState} from "react"
-import Btn from "../components/Button/Btn";
+import "./createPollInput.css";
+import { useState } from "react";
+import Btn from "../../components/Button/Btn";
 
 const CreatePollInput = (props) => {
 	const { onChange, ...inputProps } = props;
@@ -19,4 +19,4 @@ const CreatePollInput = (props) => {
 	);
 };
 
-export default CreatePollInput
+export default CreatePollInput;
