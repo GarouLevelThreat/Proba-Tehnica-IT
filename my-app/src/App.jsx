@@ -1,9 +1,8 @@
 import Logo from "./assets/logo.jpg";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 import ResizeNavbar from "./components/ResizeNavbar/ResizeNavbar";
-import NavbarLinks from "./components/NavbarLinks/NavbarLinks";
 import CreatePoll from "./components/CreatePoll/CreatePoll";
 import PollCard from "./components/PollCard/PollCard";
 import Footer from "./components/Footer/Footer";

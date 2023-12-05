@@ -14,9 +14,10 @@ const Register = (props) => {
 		{
 			id: 1,
 			name: "email",
-			type: "text",
+			type: "email",
 			placeholder: "Email",
-			errorMessage: "",
+			errorMessage: "Email is not valid!",
+			pattern: "^[w.+-]+@gmail.com$",
 			required: true,
 		},
 		{
@@ -25,7 +26,8 @@ const Register = (props) => {
 			type: "password",
 			placeholder: "Password",
 			errorMessage:
-				"Password should be 8-20 characters and it should include at least 1 letter, 1 number and 1 special character",
+				"Password should be 8-32 characters and it should include at least 1 letter, 1 number and 1 special character",
+			pattern: "^(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{8,32}$",
 			required: true,
 		},
 		{

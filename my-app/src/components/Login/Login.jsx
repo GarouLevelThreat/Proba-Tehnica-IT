@@ -13,7 +13,7 @@ const Login = (props) => {
 		{
 			id: 1,
 			name: "email",
-			type: "text",
+			type: "email",
 			placeholder: "Email",
 			required: true,
 		},
