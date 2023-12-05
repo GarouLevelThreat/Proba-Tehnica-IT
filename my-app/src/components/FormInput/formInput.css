@@ -28,7 +28,7 @@ input:focus::placeholder {
 }
 
 span {
-  font-size: 12px;
+  font-size: 13px;
   padding: 3px;
   color: red;
   display: none;

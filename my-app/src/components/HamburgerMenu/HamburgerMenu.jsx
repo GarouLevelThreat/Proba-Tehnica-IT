@@ -8,7 +8,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 const HamburgerMenu = (props) => {
 	const [isClicked, setIsClicked] = useState(false);
 
-	const handleClick = () => {
+	const handleClick = (param) => {
 		setIsClicked(!isClicked);
 	};
 

@@ -1,5 +1,5 @@
 import Logo from "./assets/logo.jpg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 import ResizeNavbar from "./components/ResizeNavbar/ResizeNavbar";
@@ -10,6 +10,7 @@ import "./navbar.css";
 import "./grid.css";
 import DefaultText from "./components/Default/DefaultText";
 import DefaultImage from "./components/Default/DefaultImage";
+import axios from "axios";
 
 const App = () => {
 	const [registerPopup, setRegisterPopup] = useState(false);
@@ -53,6 +54,7 @@ const App = () => {
 	};
 
 	const [idValue, setIdValue] = useState(4);
+	/*
 	const [pollCards, setPollCards] = useState([
 		{
 			id: "0",
@@ -79,6 +81,14 @@ const App = () => {
 			options: ["option 1", "option 2", "option 3"],
 		},
 	]);
+  */
+	const [pollCards, setPollCards] = useState([]);
+	useEffect(() => {
+		axios
+			.get("http://localhost:8080/get-polls")
+			.then((pollCards) => setPollCards(pollCards.data))
+			.catch((err) => console.log(err));
+	}, []);
 
 	const handleDeletePoll = (deletePoll) => {
 		let deletePollId = deletePoll.target.id;
@@ -96,6 +106,22 @@ const App = () => {
 			votingOption: inputs.votingOption,
 			options: inputs.pollOptions.map((option) => option.input),
 		};
+
+		/*
+  const handleAddPoll = (inputs) => {
+		const newPoll = {
+			id: `${idValue}`,
+			title: inputs.title,
+			votingOption: inputs.votingOption,
+			options: inputs.pollOptions.map((option) => option.input),
+		};
+
+    axios.post("http://localhost:8080/create-poll", newPoll)
+    .then((pollCards) => {
+      
+    })
+  }
+  */
 
 		setIdValue(idValue + 1);
 		const newPollCards = pollCards.concat(newPoll);
@@ -135,16 +161,17 @@ const App = () => {
 					handleClickLogout={handleClickLogout}
 				/>
 			</nav>
-
 			<Register
 				trigger={registerPopup}
 				setTrigger={setRegisterPopup}
+				setIsUserRegistered={setIsUserRegistered}
 				setFooterTrigger={setIsFooter}
 				setRegisterStatus={handleRegisterStatus}
 			/>
 			<Login
 				trigger={loginPopup}
 				setTrigger={setLoginPopup}
+				setIsUserLogged={setIsUserLogged}
 				setFooterTrigger={setIsFooter}
 				setLoginStatus={handleLoginStatus}
 			/>

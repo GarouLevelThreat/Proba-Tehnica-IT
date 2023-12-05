@@ -2,6 +2,7 @@ import "./register.css"
 import {useState} from "react"
 import Btn from "../Button/Btn"
 import FormInput from "../FormInput/FormInput"
+import axios from "axios";
 
 const Register = (props) => {
 	const [values, setValues] = useState({
@@ -17,7 +18,9 @@ const Register = (props) => {
 			type: "email",
 			placeholder: "Email",
 			errorMessage: "Email is not valid!",
-			pattern: "^[w.+-]+@gmail.com$",
+			/*
+			pattern: "[\\w+(.\\w+)+]+@gmail.com$",
+      */
 			required: true,
 		},
 		{
@@ -26,8 +29,10 @@ const Register = (props) => {
 			type: "password",
 			placeholder: "Password",
 			errorMessage:
-				"Password should be 8-32 characters and it should include at least 1 letter, 1 number and 1 special character",
+				"Password should be 8-32 characters and it should include at least 1 uppercase, 1 lowercase, 1 number and 1 special character",
+			/*
 			pattern: "^(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{8,32}$",
+      */
 			required: true,
 		},
 		{
@@ -41,17 +46,32 @@ const Register = (props) => {
 		},
 	];
 
+	const data = {
+		email: values.email,
+		password: values.password,
+	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const data = new FormData(e.target);
-		//console.log(Object.fromEntries(data.entries()));
+		axios
+			.post("http://localhost:8080/register", data)
+			.then((result) => {
+				console.log(result);
+				if (result.data === "User already exists!") {
+					alert(result.data);
+				} else {
+					props.setTrigger(false);
+					props.setIsUserRegistered(true);
+					props.setFooterTrigger(true);
+				}
+			})
+			.catch((err) => console.log(err));
 	};
 
 	const onChange = (e) => {
 		setValues({ ...values, [e.target.name]: e.target.value });
 	};
 
-	//console.log(values);
 	return props.trigger ? (
 		<>
 			<div className="blur"></div>
@@ -74,15 +94,13 @@ const Register = (props) => {
 							onChange={onChange}
 						/>
 					))}
-					<button className="register-btn" onClick={props.setRegisterStatus}>
-						Register
-					</button>
+					<button className="register-btn">Register</button>
 				</form>
 			</div>
 		</>
 	) : (
 		""
 	);
-}
+};
 
 export default Register

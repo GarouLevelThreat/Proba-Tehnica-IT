@@ -3,6 +3,7 @@ import {useState} from "react"
 import Btn from "../Button/Btn";
 import CreatePollInput from "../../components/CreatePollInput/CreatePollInput";
 import VotingOption from "../VotingOption/VotingOption";
+import axios from "axios";
 
 const CreatePoll = (props) => {
 	const [idValue, setIdValue] = useState(4);
@@ -42,7 +43,7 @@ const CreatePoll = (props) => {
 	const handleAddOption = () => {
 		const addOption = {
 			id: `${idValue}`,
-			info: "",
+			input: "",
 			placeholder: `Option ${idValue}`,
 		};
 
@@ -81,6 +82,13 @@ const CreatePoll = (props) => {
 	};
 
 	const handleSubmit = () => {
+		e.preventDefault();
+
+		axios
+			.post("http://localhost:8080/create-poll", inputs)
+			.then((result) => console.log(result))
+			.catch((err) => console.log(err));
+
 		console.log(inputs);
 	};
 

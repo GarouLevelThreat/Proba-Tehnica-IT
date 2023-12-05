@@ -38,6 +38,11 @@
   font-size: 2.3em;
 }
 
+.register-container .error-message {
+  color: red;
+  display: flex;
+}
+
 .register-container form .register-btn {
   height: 50px;
   padding: 12px 44px;

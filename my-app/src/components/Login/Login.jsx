@@ -2,6 +2,7 @@ import "./login.css"
 import {useState} from "react"
 import Btn from "../Button/Btn"
 import FormInput from "../FormInput/FormInput"
+import axios from "axios";
 
 const Login = (props) => {
 	const [values, setValues] = useState({
@@ -26,10 +27,27 @@ const Login = (props) => {
 		},
 	];
 
+	const data = {
+		email: values.email,
+		password: values.password,
+	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const data = new FormData(e.target);
-		//console.log(Object.fromEntries(data.entries()));
+
+		axios
+			.post("http://localhost:8080/login", data)
+			.then((result) => {
+				console.log(result);
+				if (result.data === "Succes!") {
+					props.setTrigger(false);
+					props.setIsUserLogged(true);
+					props.setFooterTrigger(true);
+				} else {
+					alert(result.data);
+				}
+			})
+			.catch((err) => console.log(err));
 	};
 
 	const onChange = (e) => {
@@ -59,15 +77,13 @@ const Login = (props) => {
 							onChange={onChange}
 						/>
 					))}
-					<button className="login-btn" onClick={props.setLoginStatus}>
-						Login
-					</button>
+					<button className="login-btn">Login</button>
 				</form>
 			</div>
 		</>
 	) : (
 		""
 	);
-}
+};
 
 export default Login
