@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./PollCard.css";
 import PollOption from "../PollOption/PollOption";
 import Btn from "../Button/Btn";
+import axios from "axios";
 
 const PollCard = (props) => {
 	const [isChecked, setIsChecked] = useState("");

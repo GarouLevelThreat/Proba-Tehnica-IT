@@ -55,6 +55,20 @@ app.get("/get-polls", (req, res) => {
 		.catch((err) => res.json(err));
 });
 
+app.delete("/delete-polls/:id", (req, res) => {
+	/*
+	if (ObjectId.isValid(req.id)) {
+		PollModel.deleteOne({ _id: ObjectId(req.id) })
+			.then((result) => res.json(result))
+			.catch((err) => res.json(err));
+	}
+  */
+	PollModel.findOne({ _id: ObjectId(req.id) }).then((result) => {
+		console.log(result);
+		res.json(result);
+	});
+});
+
 app.listen(port, () => {
 	console.log("Running...");
 });

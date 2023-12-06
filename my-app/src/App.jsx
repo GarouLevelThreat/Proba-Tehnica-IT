@@ -82,6 +82,7 @@ const App = () => {
 		},
 	]);
   */
+
 	const [pollCards, setPollCards] = useState([]);
 	useEffect(() => {
 		axios
@@ -89,6 +90,8 @@ const App = () => {
 			.then((pollCards) => setPollCards(pollCards.data))
 			.catch((err) => console.log(err));
 	}, []);
+
+  
 
 	const handleDeletePoll = (deletePoll) => {
 		let deletePollId = deletePoll.target.id;
@@ -106,27 +109,14 @@ const App = () => {
 			votingOption: inputs.votingOption,
 			options: inputs.pollOptions.map((option) => option.input),
 		};
-
-		/*
-  const handleAddPoll = (inputs) => {
-		const newPoll = {
-			id: `${idValue}`,
-			title: inputs.title,
-			votingOption: inputs.votingOption,
-			options: inputs.pollOptions.map((option) => option.input),
-		};
-
-    axios.post("http://localhost:8080/create-poll", newPoll)
-    .then((pollCards) => {
-      
-    })
-  }
-  */
-
 		setIdValue(idValue + 1);
-		const newPollCards = pollCards.concat(newPoll);
 
-		setPollCards(newPollCards);
+		axios
+			.post("http://localhost:8080/create-polls", newPoll)
+			.then(() => {
+				window.location.reload();
+			})
+			.catch((err) => console.log(err));
 	};
 
 	const handleVote = () => {
