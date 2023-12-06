@@ -138,16 +138,15 @@ const CreatePoll = (props) => {
 							/>
 						</div>
 					</div>
-					<button
-						className="create-poll-btn"
+					<Btn
+						name="Create Poll"
+						class="create-poll-btn"
 						onClick={() => {
 							props.setTrigger(false);
 							props.setFooterTrigger(true);
 							props.addPoll(inputs);
 						}}
-					>
-						Create Poll
-					</button>
+					/>
 				</form>
 			</div>
 		</>

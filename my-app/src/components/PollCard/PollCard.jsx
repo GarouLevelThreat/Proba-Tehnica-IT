@@ -18,7 +18,7 @@ const PollCard = (props) => {
 		axios
 			.delete(`http://localhost:8080/delete-polls/${id}`)
 			.then((result) => {
-				console.log(result);
+        window.location.reload();
 			})
 			.catch((err) => {
 				console.log(err);

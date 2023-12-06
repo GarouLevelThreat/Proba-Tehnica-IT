@@ -1,5 +1,4 @@
 import "./createPollInput.css";
-import { useState } from "react";
 import Btn from "../../components/Button/Btn";
 
 const CreatePollInput = (props) => {

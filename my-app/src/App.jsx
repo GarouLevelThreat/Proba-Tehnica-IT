@@ -32,9 +32,9 @@ const App = () => {
 	const [isUserLogged, setIsUserLogged] = useState(false);
 	const [isUserRegistered, setIsUserRegistered] = useState(false);
 
-	if (token) {
+	if (!isUserLogged && token) {
 		axios
-			.get("http://localhost:8080/auth")
+			.get(`http://localhost:8080/auth?token=${token}`)
 			.then((result) => {
 				setIsUserLogged(result);
 			})

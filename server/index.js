@@ -1,12 +1,12 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
-const { ObjectId } = require("mongodb");
 const app = express();
 const port = 8080;
 
 const mongoose = require("mongoose");
 const cors = require("cors");
 
+const { ObjectId } = require("mongodb");
 const UserModel = require("./models/User");
 const PollModel = require("./models/Poll");
 
@@ -16,7 +16,8 @@ app.use(cors());
 mongoose.connect("mongodb://localhost:27017/users");
 
 app.get("/auth", (req, res) => {
-	const decodedToken = jwt.verify(req.token, "SECRET_KEY");
+	console.log(req.query.token);
+	const decodedToken = jwt.verify(req.query.token, "SECRET_KEY");
 	if (decodedToken) {
 		res.json(true);
 	} else {
@@ -68,9 +69,13 @@ app.get("/get-polls", (req, res) => {
 });
 
 app.delete("/delete-polls/:id", (req, res) => {
-	PollModel.deleteOne({ _id: ObjectId(req.params.id) })
-		.then((result) => res.json(result))
-		.catch((result) => res.json(result));
+	console.log(req.params.id);
+	PollModel.deleteOne({ _id: new ObjectId(req.params.id) })
+		.then((result) => {
+			console.log(result);
+			res.json(result);
+		})
+		.catch((err) => res.json(err));
 });
 
 app.listen(port, () => {

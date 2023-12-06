@@ -82,6 +82,11 @@ body {
   .footer a {
     padding: 0;
   }
+
+  .footer a img {
+    width: 42px;
+    height: 42px;
+  }
 }
 
 @media (max-width: 500px) {
