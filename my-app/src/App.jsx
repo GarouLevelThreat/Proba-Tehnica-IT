@@ -13,6 +13,8 @@ import DefaultImage from "./components/Default/DefaultImage";
 import axios from "axios";
 
 const App = () => {
+	const [token, setToken] = useState(localStorage.getItem("token") || "");
+
 	const [registerPopup, setRegisterPopup] = useState(false);
 	const [loginPopup, setLoginPopup] = useState(false);
 	const [isFooter, setIsFooter] = useState(true);
@@ -29,6 +31,17 @@ const App = () => {
 
 	const [isUserLogged, setIsUserLogged] = useState(false);
 	const [isUserRegistered, setIsUserRegistered] = useState(false);
+
+	if (token) {
+		axios
+			.get("http://localhost:8080/auth")
+			.then((result) => {
+				setIsUserLogged(result);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}
 
 	const handleLoginStatus = () => {
 		setLoginPopup(false);
@@ -50,61 +63,25 @@ const App = () => {
 	};
 
 	const handleClickLogout = () => {
+		localStorage.removeItem("token");
+		setToken("");
 		setIsUserLogged(false);
 	};
 
 	const [idValue, setIdValue] = useState(4);
-	/*
-	const [pollCards, setPollCards] = useState([
-		{
-			id: "0",
-			title: "Poll 1",
-			votingOption: "1",
-			options: ["option 1", "option 2", "option 3"],
-		},
-		{
-			id: "1",
-			title: "Poll 2",
-			votingOption: "0",
-			options: ["option 1", "option 2", "option 3"],
-		},
-		{
-			id: "2",
-			title: "Poll 3",
-			votingOption: "0",
-			options: ["option 1", "option 2", "option 3"],
-		},
-		{
-			id: "3",
-			title: "Poll 4",
-			votingOption: "0",
-			options: ["option 1", "option 2", "option 3"],
-		},
-	]);
-  */
 
 	const [pollCards, setPollCards] = useState([]);
 	useEffect(() => {
 		axios
 			.get("http://localhost:8080/get-polls")
-			.then((pollCards) => setPollCards(pollCards.data))
+			.then((pollCards) => {
+				setPollCards(pollCards.data);
+			})
 			.catch((err) => console.log(err));
 	}, []);
 
-  
-
-	const handleDeletePoll = (deletePoll) => {
-		let deletePollId = deletePoll.target.id;
-
-		console.log(deletePoll.target.id);
-
-		const newPollCards = pollCards.filter((poll) => deletePollId !== poll.id);
-		setPollCards(newPollCards);
-	};
-
 	const handleAddPoll = (inputs) => {
 		const newPoll = {
-			id: `${idValue}`,
 			title: inputs.title,
 			votingOption: inputs.votingOption,
 			options: inputs.pollOptions.map((option) => option.input),
@@ -126,13 +103,12 @@ const App = () => {
 	const listPollCards = pollCards.map((poll) => (
 		<PollCard
 			key={poll.id}
-			id={poll.id}
+			poll={poll}
 			title={poll.title}
 			votingOption={poll.votingOption}
 			optionsList={poll.options}
 			isUserLogged={isUserLogged}
 			triggerUserStatus={setIsUserLogged}
-			triggerDelete={handleDeletePoll}
 			triggerVote={handleVote}
 		/>
 	));

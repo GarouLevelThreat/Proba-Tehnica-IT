@@ -38,8 +38,9 @@ const Login = (props) => {
 		axios
 			.post("http://localhost:8080/login", data)
 			.then((result) => {
-				console.log(result);
-				if (result.data === "Succes!") {
+				if (result.data.message === "Succes!") {
+					//console.log(result.data);
+					localStorage.setItem("token", result.data.token);
 					props.setTrigger(false);
 					props.setIsUserLogged(true);
 					props.setFooterTrigger(true);

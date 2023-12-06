@@ -13,6 +13,18 @@ const PollCard = (props) => {
 		setCanVote(false);
 	};
 
+  const handleDeletePoll = (id, e) => {
+		//console.log(id);
+		axios
+			.delete(`http://localhost:8080/delete-polls/${id}`)
+			.then((result) => {
+				console.log(result);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	return (
 		<div className="poll-container">
 			<h2 className="poll-title">{props.title}</h2>
@@ -37,8 +49,7 @@ const PollCard = (props) => {
 					<Btn
 						name="Delete"
 						class="delete-btn"
-						onClick={props.triggerDelete}
-						id={props.id}
+						onClick={(e) => handleDeletePoll(props.poll._id, e)}
 					/>
 				)}
 				{canVote === false || isChecked === "" ? (

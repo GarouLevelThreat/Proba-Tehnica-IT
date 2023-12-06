@@ -1,4 +1,6 @@
 const express = require("express");
+const jwt = require("jsonwebtoken");
+const { ObjectId } = require("mongodb");
 const app = express();
 const port = 8080;
 
@@ -13,12 +15,22 @@ app.use(cors());
 
 mongoose.connect("mongodb://localhost:27017/users");
 
+app.get("/auth", (req, res) => {
+	const decodedToken = jwt.verify(req.token, "SECRET_KEY");
+	if (decodedToken) {
+		res.json(true);
+	} else {
+		res.json(false);
+	}
+});
+
 app.post("/login", (req, res) => {
 	const { email, password } = req.body;
 	UserModel.findOne({ email: email }).then((user) => {
 		if (user) {
+			const token = jwt.sign({ email: user.email }, "SECRET_KEY");
 			if (user.password === password) {
-				res.json("Succes!");
+				res.json({ message: "Succes!", token: token });
 			} else {
 				res.json("Password is incorrect.");
 			}
@@ -56,29 +68,11 @@ app.get("/get-polls", (req, res) => {
 });
 
 app.delete("/delete-polls/:id", (req, res) => {
-	/*
-	if (ObjectId.isValid(req.id)) {
-		PollModel.deleteOne({ _id: ObjectId(req.id) })
-			.then((result) => res.json(result))
-			.catch((err) => res.json(err));
-	}
-  */
-	PollModel.findOne({ _id: ObjectId(req.id) }).then((result) => {
-		console.log(result);
-		res.json(result);
-	});
+	PollModel.deleteOne({ _id: ObjectId(req.params.id) })
+		.then((result) => res.json(result))
+		.catch((result) => res.json(result));
 });
 
 app.listen(port, () => {
 	console.log("Running...");
 });
-
-/*
-app.get("/", (req, res) => {
-	res.send("Hello World!");
-});
-
-app.listen(port, () => {
-	console.log(`Example app listening on port ${port}`);
-});
-*/
